@@ -1,25 +1,23 @@
 pipeline {
 	agent any
-	environment {
-		mavenHome = tool 'apache-maven-3.6.3'
-	}
 	tools {
-		jdk 'jdk-17.0.2'
+		maven "apache-maven-3.6.3"
 	}
 	stages {
 		stage('Build'){
 			steps {
-				bat "mvn clean install -DskipTests"
+				git "https://github.com/devesh1721/jenkins-assignment.git"
+				sh "mvn clean install -DskipTests"
 			}
 		}
 		stage('Test'){
 			steps{
-				bat "mvn test"
+				sh "mvn test"
 			}
 		}
 		stage('Deploy') {
 			steps {
-			    bat "mvn jar:jar deploy:deploy"
+			    sh "mvn jar:jar deploy:deploy"
 			}
 		}
 	}
