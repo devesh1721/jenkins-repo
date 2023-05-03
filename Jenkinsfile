@@ -22,7 +22,7 @@ pipeline {
 				script{
 					withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerpwd')]) {
 					}
-					sh "docker login --username  devesh29476 --password-stdin {dockerpwd} ."
+					sh "docker login --username  devesh29476 --password {dockerpwd} ."
 					sh "docker push devesh29476/bookservicev9"
 				}
 			}
