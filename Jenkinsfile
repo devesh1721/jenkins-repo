@@ -4,10 +4,17 @@ pipeline {
 		maven "MAVEN_HOME"
 	}
 	stages {
-		stage('Build'){
+		stage('Build Maven project'){
 			steps {
 				git "https://github.com/devesh1721/jenkins-assignment.git"
 				sh "mvn clean install -DskipTests"
+			}
+		}
+		stage('Create docker image'){
+			steps{
+				scripts{
+					sh "docker build -t  devesh29476/bookservicev9 ."
+				}
 			}
 		}
 		stage('Test'){
