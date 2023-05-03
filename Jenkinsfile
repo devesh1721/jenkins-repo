@@ -12,7 +12,7 @@ pipeline {
 		}
 		stage('Create docker image'){
 			steps{
-				scripts{
+				script{
 					sh "docker build -t  devesh29476/bookservicev9 ."
 				}
 			}
