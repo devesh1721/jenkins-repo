@@ -17,6 +17,16 @@ pipeline {
 				}
 			}
 		}
+		stage('Pushing dcoker image to docker hub '){
+			steps{
+				script{
+					withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerpwd')]) {
+					}
+					sh "docker login -u devesh29476 -p{dockerpwd} ."
+					sh "docker push devesh29476/bookservicev9"
+				}
+			}
+		}
 		stage('Test'){
 			steps{
 				sh "mvn test"
