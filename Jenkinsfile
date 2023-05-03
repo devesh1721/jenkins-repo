@@ -20,9 +20,7 @@ pipeline {
 		stage('Pushing dcoker image to docker hub '){
 			steps{
 				script{
-					withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerpwd')]) {
-					}
-					sh "docker login --username  devesh29476 --password {dockerpwd}"
+					sh "docker login --u devesh29476 -p 'VEDIKAaA@123'"
 					sh "docker push devesh29476/bookservicev9"
 				}
 			}
